@@ -3,7 +3,11 @@
 
 import { createApp } from 'vue'
 import App from './App.vue'
+
 import { createWebHistory, createRouter } from 'vue-router';
+
+import store from './store'
+
 import Home from './components/Home.vue'
 import Profil from './components/Profil.vue'
 import Login from './components/Login.vue'
@@ -41,5 +45,6 @@ const router = createRouter({
 
 const app = createApp(App)
 app.use(router)
+app.use(store)
 app.config.globalProperties.axios = axios
 app.mount('#app')

@@ -19,17 +19,8 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/member">Member</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" :class="{active: $route.name==='Product_page'}">
             <router-link class="nav-link" to="/product">Product</router-link>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Major
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <router-link class="nav-link" to="/profil">RPL</router-link>
-              <router-link class="nav-link" to="/profil">TKJ</router-link>
-            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/login" v-on:click="logout()">Logout</a>

@@ -5,6 +5,7 @@
             List Product
             <router-link class="btn btn-primary btn-sm float-right" :to="{path:'/addProduct'}" ><i class='fas fa-folder-plus'></i> Add Product</router-link>
         </div>
+        <modal></modal>  
         <div class="container m-auto d-flex flex-wrap align-items-stretch justify-content-around justify-content-sm-around">
             <div class="card mt-3" style="width:250px" v-for="lp in list_product" :key="lp">
                 <img :src="'http://localhost/PROJECT-LARAVEL/belajar-toko/public/photo/' + lp.foto_product" width="250" height="200">
@@ -13,6 +14,8 @@
                     <p class="card-text">{{ lp.deskripsi }}</p>
                     <h5 class="card-text">Rp. {{ lp.harga }}</h5>
                     <a class="d-flex flex-wrap justify-content-around">
+                        <button v-on:click="addCart(lp.id_product)" class="btn btn-primary"><i class='fas fa-shopping-basket'></i></button>
+                        <button class="btn btn-secondary"><i class='fas fa-file-text'></i></button>
                         <router-link class="btn btn-warning" :to="{path: '/uploadProduct/' + lp.id_product}"><i class='fas fa-image'></i></router-link>
                         <router-link class="btn btn-info" :to="{path: '/updateProduct/' + lp.id_product}"><i class='fas fa-pen'></i></router-link>
                         <button v-on:click="hapus(lp.id_product)" class="btn btn-danger" ><i class="fas fa-trash-alt fa-fw"></i></button>
@@ -24,8 +27,12 @@
 </template>
 
 <script>
+import modal from './components/modal.vue'
     export default{
         name: 'Product_page',
+        components: {
+            modal
+        },
         data(){
             return{
                 list_product:[],
@@ -46,7 +53,10 @@
                         location.reload()
                     })
                 }
-            }
+            },
+            // addCart(id_product){
+                
+            // },
         },
         mounted(){
             this.getData()
