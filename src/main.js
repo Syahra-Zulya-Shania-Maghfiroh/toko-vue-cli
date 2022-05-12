@@ -6,7 +6,7 @@ import App from './App.vue'
 
 import { createWebHistory, createRouter } from 'vue-router';
 
-import store from './store'
+import store from './store/index'
 
 import Home from './components/Home.vue'
 import Profil from './components/Profil.vue'
@@ -20,6 +20,7 @@ import Product from './components/Product/Product.vue'
 import AddProduct from './components/Product/Add-Product.vue'
 import UpdateProduct from './components/Product/Update-Product.vue'
 import UploadProduct from './components/Product/Upload-Product.vue'
+import AddCart from './components/Product/Add-Cart.vue'
 // const UploadProduct = () =>
 //     import ('./components/Product/Upload-Product.vue')
 import axios from 'axios'
@@ -39,6 +40,7 @@ const router = createRouter({
         { path: '/addProduct', name: "Add_product", component: AddProduct },
         { path: '/updateProduct/:id', name: "Update_product", component: UpdateProduct },
         { path: '/uploadProduct/:id', name: "Upload_product", component: UploadProduct },
+        { path: '/addCart/:id', name: "Add_cart", component: AddCart },
     ],
     base: '/'
 });
