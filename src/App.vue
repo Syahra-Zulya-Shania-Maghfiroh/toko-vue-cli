@@ -59,10 +59,12 @@ export default {
     }
   },
   mounted(){
+    // this.$store.commit('updateCartFromLocalStorage')
     this.redirectlogin();
     if(JSON.parse(localStorage.getItem('user'))!=null){
         this.data = JSON.parse(localStorage.getItem('user'));
     }
+    this.$store.commit('UpdateCartFromLocalStorage')
   }
 }
 </script>

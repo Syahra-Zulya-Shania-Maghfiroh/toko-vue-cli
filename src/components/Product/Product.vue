@@ -9,13 +9,14 @@
             <div class="card mt-3" style="width:250px" v-for="lp in list_product" :key="lp">
                 <img :src="'http://localhost/PROJECT-LARAVEL/belajar-toko/public/photo/' + lp.foto_product" width="250" height="200">
                 <div class="card-body">
-                    <h4 class="card-title">{{ lp.nama_product }}</h4>
+                    <h4 class="card-title">{{ lp.nama_product }} ({{ getcount(lp) }})</h4>
                     <p class="card-text">{{ lp.deskripsi }}</p>
                     <h5 class="card-text">Rp. {{ lp.harga }}</h5>
                     <a class="d-flex flex-wrap justify-content-around">
-                        <router-link class="btn btn-primary" :to="{path: '/addCart/' + lp.id_product}"><i class='fas fa-cart-plus'></i></router-link>
+                        <router-link class="btn btn-primary" :to="{path: '/addCart/' + lp.id_product}"><i class='fas fa fa-eye'></i></router-link>
                         <router-link class="btn btn-warning" :to="{path: '/uploadProduct/' + lp.id_product}"><i class='fas fa-image'></i></router-link>
                         <router-link class="btn btn-info" :to="{path: '/updateProduct/' + lp.id_product}"><i class='fas fa-pen'></i></router-link>
+                        <!-- <button v-on:click="addToCart(product)" class="btn btn-default" ><i class="fas fa-cart-plus"></i></button> -->
                         <button v-on:click="hapus(lp.id_product)" class="btn btn-danger" ><i class="fas fa-trash-alt fa-fw"></i></button>
                     </a>
                 </div>
@@ -33,10 +34,11 @@
             }
         },
         methods: {
-            getData: function(){
+            getData(){
                 this.axios.get('http://localhost/PROJECT-LARAVEL/belajar-toko/public/api/product')
                 .then(response => {
                     this.list_product = response.data;
+                    console.log(this.list_product);
                 })
             },
             hapus(id_product){
@@ -48,12 +50,15 @@
                     })
                 }
             },
-            // addCart(id_product){
-                
-            // },
+            addToCart(product){
+                this.$store.commit('addToCart', product)
+            },
+            getcount(product){
+                return this.$store.getters.productQty(product)
+            },
         },
         mounted(){
             this.getData()
-        }
+        },
     }
 </script>

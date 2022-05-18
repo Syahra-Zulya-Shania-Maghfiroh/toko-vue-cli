@@ -11,6 +11,7 @@
                     <a class="d-flex flex-wrap justify-content-around">
                         <button v-on:click="removeItem()" class="btn btn-secondary"><i class="fas fa-minus"></i></button>
                         <button v-on:click="AddToCart()" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+                        <router-link class="btn btn-success" :to="{path: '/Cart' }"><i class='fas fa-cart-plus'></i></router-link>
                     </a>
                 </div>
             </div>
@@ -57,6 +58,7 @@
         },
         mounted(){
             this.getDetail(this.$route.params.id);
+            // this.$store.commit('UpdateCartFromLocalStorage')
         },
         computed: {
             getcount(){

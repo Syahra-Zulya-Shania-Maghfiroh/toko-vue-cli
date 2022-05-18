@@ -20,11 +20,6 @@
                     <input type="text" class="form-control" id="harga" v-model="harga" placeholder="Input Your Price">
                 </div>
 
-                <!-- <div class="mb-3">
-                    <label for="foto_product" class="form-label">Photo</label>
-                    <input type="file" class="form-control" id="foto_product" @change="uploadProduct($event)">
-                </div> -->
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

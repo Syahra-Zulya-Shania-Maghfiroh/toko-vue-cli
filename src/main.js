@@ -21,6 +21,7 @@ import AddProduct from './components/Product/Add-Product.vue'
 import UpdateProduct from './components/Product/Update-Product.vue'
 import UploadProduct from './components/Product/Upload-Product.vue'
 import AddCart from './components/Product/Add-Cart.vue'
+import Cart from './components/Product/Cart.vue'
 // const UploadProduct = () =>
 //     import ('./components/Product/Upload-Product.vue')
 import axios from 'axios'
@@ -41,6 +42,7 @@ const router = createRouter({
         { path: '/updateProduct/:id', name: "Update_product", component: UpdateProduct },
         { path: '/uploadProduct/:id', name: "Upload_product", component: UploadProduct },
         { path: '/addCart/:id', name: "Add_cart", component: AddCart },
+        { path: '/Cart', name: "Cart_page", component: Cart },
     ],
     base: '/'
 });
